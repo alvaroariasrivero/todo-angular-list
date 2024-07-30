@@ -7,7 +7,7 @@ export class TasksService {
 
   private localSotorageKey = 'todoList';
 
-  getTasks() {
+  getTasks():string[] {
     return JSON.parse(localStorage.getItem(this.localSotorageKey) as string) || [];
   }
 

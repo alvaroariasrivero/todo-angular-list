@@ -1,1 +1,11 @@
-<router-outlet />
+<div>
+  <h2>Todo List</h2>
+  <ul>
+    @for (task of tasksList; track $index) {
+      <li>{{task}}</li>
+      <button (click)="removeTask($index)">Done</button>
+    }
+    <input type="text" placeholder="New task" [(ngModel)]="newTask">
+    <button (click)="addNewTask()">Add New Task</button>
+  </ul>
+</div>
