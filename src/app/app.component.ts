@@ -14,6 +14,7 @@ export class AppComponent implements OnInit {
 
   tasksList: string[] = [];
   newTask: string = '';
+  showMessage: boolean = false;
 
   private _tasksService = inject(TasksService);
 
@@ -22,9 +23,14 @@ export class AppComponent implements OnInit {
   }
 
   addNewTask() {
-    this._tasksService.addTask(this.newTask);
-    this.newTask = '';
-    this.tasksList = this._tasksService.getTasks();
+    if(this.newTask.length > 0){
+      this._tasksService.addTask(this.newTask);
+      this.newTask = '';
+      this.tasksList = this._tasksService.getTasks();
+      this.showMessage = false;
+    } else{
+      this.showMessage = true;
+    }
   }
 
   removeTask(index: number){
